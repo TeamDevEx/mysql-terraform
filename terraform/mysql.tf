@@ -1,11 +1,12 @@
 resource "google_sql_database_instance" "instance" {
-  name             = "my-instance"
-  database_version = "MYSQL_5_7"
-  region           = "northamerica-northeast1"
+  deletion_protection = false
+  name                = "my-instance"
+  database_version    = "MYSQL_5_7"
+  region              = "northamerica-northeast1"
   settings {
     tier = "db-f1-micro"
   }
-  deletion_protection = false
+
 }
 
 resource "google_sql_database" "database" {
