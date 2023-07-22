@@ -22,14 +22,14 @@ resource "google_sql_user" "user" {
   host     = "180.191.66.152"
 }
 
-resource "google_compute_firewall" "firewall" {
-  name    = "my-firewall-rule"
-  network = "default"
+# resource "google_compute_firewall" "firewall" {
+#   name    = "my-firewall-rule"
+#   network = "default"
 
-  allow {
-    protocol = "tcp"
-    ports    = ["3306"] # Adjust the port if needed
-  }
+#   allow {
+#     protocol = "tcp"
+#     ports    = ["3306"] # Adjust the port if needed
+#   }
 
-  source_ranges = [google_sql_user.user.host]
-}
+#   source_ranges = [google_sql_user.user.host]
+# }

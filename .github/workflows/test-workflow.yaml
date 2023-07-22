@@ -27,4 +27,4 @@ jobs:
         uses: TeamDevEx/terraform-github-action@master
         with:
           terraform_dir_path: 'terraform'
-          to_destroy: true
+          to_destroy: false
