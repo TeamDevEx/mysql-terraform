@@ -1,0 +1,30 @@
+name: Test Workflow
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Cloning repo"
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          credentials_json: ${{ secrets.DEMOSQL  }}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v1'
+
+      - name: "Test the terraform-github-action"
+        uses: TeamDevEx/terraform-github-action@master
+        with:
+          terraform_dir_path: 'terraform'
+          to_destroy: false
